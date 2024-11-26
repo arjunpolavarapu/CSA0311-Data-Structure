@@ -1,0 +1,21 @@
+class HashTable:
+    def __init__(self, size):
+        self.size = size
+        self.table = [[] for _ in range(size)]  # Initialize hash table with empty lists
+
+    def hash_function(self, key):
+        return key % self.size
+
+    def insert(self, key, value):
+        index = self.hash_function(key)
+        # Check if key already exists; update the value if found
+        for pair in self.table[index]:
+            if pair[0] == key:
+                pair[1] = value
+                return
+        # Otherwise, append the new key-value pair
+        self.table[index].append([key, value])
+
+    def search(self, key):
+        index = self.hash_function(key)
+        for pair
