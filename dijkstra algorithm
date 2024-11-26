@@ -1,0 +1,30 @@
+import heapq
+
+class Solution:
+    def dijkstra(self, graph, source):
+        # Initialize the distance array and the priority queue
+        # Distance to all nodes is infinity, except the source node
+        distances = {node: float('inf') for node in graph}
+        distances[source] = 0
+        
+        # Priority queue to store (distance, node)
+        pq = [(0, source)]  # (distance, node)
+        
+        while pq:
+            # Get the node with the smallest tentative distance
+            current_distance, current_node = heapq.heappop(pq)
+            
+            # If the current distance is already greater than the stored distance, skip
+            if current_distance > distances[current_node]:
+                continue
+            
+            # Explore all the neighbors of the current node
+            for neighbor, weight in graph[current_node]:
+                distance = current_distance + weight
+                
+                # If a shorter path is found, update the distance and push to the priority queue
+                if distance < distances[neighbor]:
+                    distances[neighbor] = distance
+                    heapq.heappush(pq, (distance, neighbor))
+        
+        return distances
