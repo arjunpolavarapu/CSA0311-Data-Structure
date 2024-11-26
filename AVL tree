@@ -1,0 +1,28 @@
+def queue_operations():
+    queue = []  # Initialize an empty queue
+
+    # Enqueue operation
+    queue.append(10)
+    print("After enqueue 10:", queue)
+    queue.append(20)
+    print("After enqueue 20:", queue)
+    
+    # Dequeue operation
+    if queue:
+        dequeued = queue.pop(0)
+        print(f"Dequeued element: {dequeued}")
+    else:
+        print("Queue is empty, cannot dequeue.")
+    print("After dequeue operation:", queue)
+    
+    # Peek operation
+    if queue:
+        print("Front element (peek):", queue[0])
+    else:
+        print("Queue is empty, nothing to peek.")
+    
+    # Display queue
+    print("Queue contents:", queue)
+
+# Call the function
+queue_operations()
